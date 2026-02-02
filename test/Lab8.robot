@@ -1,16 +1,17 @@
 *** Settings ***
 Library    SeleniumLibrary
 
-Suite Setup    Open Browser To Website
+Suite Setup       Open Browser To Website
 Suite Teardown    Close Browser
 
 *** Variables ***
-${URL}    https://computing.kku.ac.th
-${BROWSER}    Chrome
+${URL}      https://computing.kku.ac.th
+${BROWSER}  Chrome
 
 *** Test Cases ***
 Open Website Successfully
-    Title Should Contain    KKU
+    ${title}=    Get Title
+    Should Contain    ${title}    KKU
 
 *** Keywords ***
 Open Browser To Website
