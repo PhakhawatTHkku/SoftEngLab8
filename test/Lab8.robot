@@ -1,26 +1,18 @@
 *** Settings ***
 Library    SeleniumLibrary
 
-Suite Setup       Open Browser To Website
+Suite Setup    Open Browser To Website
 Suite Teardown    Close Browser
 
 *** Variables ***
-${URL}      https://computing.kku.ac.th
-${BROWSER}  Chrome
+${URL}        https://computing.kku.ac.th
+${BROWSER}    chrome
 
 *** Keywords ***
 Open Browser To Website
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    Call Method    ${options}    add_argument    --headless
-    Call Method    ${options}    add_argument    --no-sandbox
-    Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    Call Method    ${options}    add_argument    --disable-gpu
-    Open Browser    ${URL}    ${BROWSER}    options=${options}
+    Open Browser    ${URL}    ${BROWSER}
     Maximize Browser Window
 
 *** Test Cases ***
 Open Website Successfully
-    [Documentation] ลองเปิดเว็บคณะ
-    Open Browser To Login page
-    [Teardown] Close Browser
-
+    Title Should Contain    KKU
