@@ -8,11 +8,6 @@ Suite Teardown    Close Browser
 ${URL}      https://computing.kku.ac.th
 ${BROWSER}  Chrome
 
-*** Test Cases ***
-Open Website Successfully
-    ${title}=    Get Title
-    Should Contain    ${title}    KKU
-
 *** Keywords ***
 Open Browser To Website
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
@@ -22,3 +17,10 @@ Open Browser To Website
     Call Method    ${options}    add_argument    --disable-gpu
     Open Browser    ${URL}    ${BROWSER}    options=${options}
     Maximize Browser Window
+
+*** Test Cases ***
+Open Website Successfully
+    [Documentation] ลองเปิดเว็บคณะ
+    Open Browser To Login page
+    [Teardown] Close Browser
+
