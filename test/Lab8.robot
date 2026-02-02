@@ -1,9 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
 
-Suite Setup    Open Browser To Website
-Suite Teardown    Close Browser
-
 *** Keywords ***
 Open Browser To Login Page
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
@@ -16,6 +13,6 @@ Open Browser To Login Page
 
 *** Test Cases ***
 Open Website Successfully
-    [Documentation]    ทดสอบการเปิดหน้าเว็บคณะฯ
+    [Documentation]    ทดลองเปิดหน้าเว็บคณะฯ
     Open Browser To Login Page
     [Teardown]    Close Browser
